@@ -4,7 +4,7 @@ Replacement for [Kustomize](https://kustomize.io/) that focuses on ordering reso
 ### Installation
 Kumulate can be installed via NPM.
 ```
-npm install -g @privoro/node-kumulate
+npm install -g @privoro/kumulate
 ```
 ### Usage
 Call `kumlate build` with a path to a directory containing a `kustomization.yml`.
