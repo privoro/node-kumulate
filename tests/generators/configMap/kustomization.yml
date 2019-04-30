@@ -1,0 +1,16 @@
+configMapGenerator:
+- name: configMapA
+  files:
+  - foo.bar.txt
+  literals:
+  - a=apple
+  - b=banana
+  - apples=oranges
+- name: configMapB
+  files:
+    - test.properties
+    - binary.txt
+  literals:
+    - a=apple
+    - b=banana
+    - apples=oranges

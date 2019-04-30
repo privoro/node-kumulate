@@ -1,0 +1,22 @@
+{
+  "name": "@privoro/kumulate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "kumulate": "bin/kumulate.js"
+  },
+  "scripts": {
+    "test": "mocha \"./src/**/*.test.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.4",
+    "js-yaml": "^3.13.1",
+    "vorpal": "^1.12.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
