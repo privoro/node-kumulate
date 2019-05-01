@@ -23,6 +23,7 @@ module.exports = class Kustomization {
   }
 
   addConfigMapGenerator(generator){
+    // TODO: merge w/ existing generator
     this.configMapGenerators.push(generator);
   }
 

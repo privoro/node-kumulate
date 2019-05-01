@@ -1,9 +1,11 @@
 const Path = require('path');
 const yaml = require('js-yaml');
 const fs = require('fs');
+const { logger } = require('./logger');
 
 function load(path, cwd = './') {
   let resolved = Path.resolve(cwd, path);
+  logger.info(`resolved ${resolved} from ${path}, ${cwd}`);
   if(! fs.existsSync(resolved)) {
     throw new Error(`could not load ${path} from ${cwd}: ${resolved} does not exist`);
   }
@@ -20,6 +22,7 @@ function load(path, cwd = './') {
 
 function loadAsBase64(path, cwd = './') {
   let resolved = Path.resolve(cwd, path);
+  logger.info(`resolved ${resolved} from ${path}, ${cwd}`);
   if(! fs.existsSync(resolved)) {
     throw new Error(`could not load ${path} from ${cwd}: ${resolved} does not exist`);
   }
@@ -34,6 +37,7 @@ function loadAsBase64(path, cwd = './') {
 
 function loadAsString(path, cwd = './') {
   let resolved = Path.resolve(cwd, path);
+  logger.info(`resolved ${resolved} from ${path}, ${cwd}`);
   if(! fs.existsSync(resolved)) {
     throw new Error(`could not load ${path} from ${cwd}: ${resolved} does not exist`);
   }

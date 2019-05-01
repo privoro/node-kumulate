@@ -1,4 +1,5 @@
 const Yaml = require('js-yaml');
+const {logger} = require('./logger');
 
 function identifier(resource) {
   return `${resource.kind}:${resource.metadata.name}`;
@@ -37,6 +38,11 @@ module.exports = class ResourceMap {
   }
 
   add(resource) {
+    if(resource === null) {
+      logger.error('cannot add a null resource');
+      return;
+    }
+
     let id = identifier(resource);
     if(this.contains(id)){
       console.warn('added resource is already present, replacing')
@@ -87,7 +93,14 @@ module.exports = class ResourceMap {
   static factory(ymlDocuments){
     let resourceMap = new ResourceMap();
     if(Array.isArray(ymlDocuments)) {
-      ymlDocuments.forEach(doc => resourceMap.add(doc));
+      logger.silly(`factory resource map from: ${JSON.stringify(ymlDocuments)}`);
+      ymlDocuments.forEach((doc, i) => {
+        if(doc === null) {
+          logger.warn(`skipping empty document (index ${i})`);
+          return;
+        }
+        resourceMap.add(doc)
+      });
     }
     else {
       resourceMap.add(ymlDocuments);
