@@ -60,6 +60,13 @@ module.exports = class SecretGenerator {
 
     if(Array.isArray(yml.files)) {
       yml.files.forEach(file => {
+        let alias = file.split("=");
+        if(alias.length === 2) {
+          let key = alias[0];
+          let value = Loader.loadAsBase64(alias[1], basePath);
+          generator.add(key, value);
+          return
+        }
         let string = Loader.loadAsBase64(file, basePath);
         let basename = Path.basename(file);
         generator.add(basename, string);
